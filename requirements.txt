@@ -1,0 +1,14 @@
+fastapi
+uvicorn
+pandas 
+dotenv
+sqlalchemy
+bcrypt
+pymysql
+alembic
+pyJWT
+scikit-learn
+seaborn
+matplotlib
+numpy
+joblib
