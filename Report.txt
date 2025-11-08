@@ -1,1 +1,2 @@
-# 
+My Report On Wine Project
+I first loaded the Zip file and view the first six columns and rows of the dataset. There was no missing values in the dataset, so i do not perform any data cleaning.
