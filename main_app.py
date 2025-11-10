@@ -4,20 +4,24 @@ from fastapi import FastAPI
 import joblib
 from sklearn.preprocessing import MinMaxScaler
 from sklearn.ensemble import RandomForestClassifier
-from sklearn.metrics import accuracy_score
-from sklearn.model_selection import cross_val_predict, train_test_split
+from sklearn.metrics import accuracy_score, classification_report
+from sklearn.model_selection import cross_val_predict, train_test_split, RandomizedSearchCV
 from pydantic import BaseModel
+from random import randint
 
 
 app=FastAPI()
-class Data(BaseModel):
+model= joblib.load("../model/model.pkl")
+scalar=joblib.load("../model/scalar.pkl")
 
-        fixed acidity:float
-        citric acid : float
-        residual sugar : float
+
+class Data(BaseModel):
+        fixed_acidity:float
+        citric_acid : float
+        residual_sugar : float
         chlorides : float               
-        free sulfur dioxide: float
-        total sulfur dioxide: float
+        free_sulfur_dioxide: float
+        total_sulfur_dioxide: float
         density : float
         pH: float
         sulphates: float
@@ -29,20 +33,23 @@ class Data(BaseModel):
 def home():
         return{'message', 'welcome to Wine dataset Predictor'}
 
-@app.post("/predict")
-def get_predict_dataset():
-    features= input:np.array([[[
-        input: fixed acidity 
-        input :citric acid 
-        input:residual sugar 
-        input:chlorides 
-        input:free sulfur dioxide
-        input:total sulfur dioxide
-        input: density 
-        input: pH
-        input: sulphates
-        input:alcohol
-        input:quality 
-     ]]])
-
+@app.post("/predict_wine_quality")
+def get_predicted_quality():
+    features=np.array([[
+        input.fixed acidity,
+        input.citric acid,
+        input.residual sugar, 
+        input.chlorides,
+        input.free_sulfur_dioxide,
+        input.total_sulfur_dioxide,
+        input.density,
+        input. pH,
+        input. sulphates,
+        input.alcohol
+    ]])
+    
+    x_scaled= scalar.fit_transform(features)
+    y_prediction = model.predic(x_scaled)
+    return (y_prediction[0])
+        
 

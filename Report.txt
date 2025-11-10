@@ -1,2 +1,13 @@
 My Report On Wine Project
-I first loaded the Zip file and view the first six columns and rows of the dataset. There was no missing values in the dataset, so i do not perform any data cleaning.
+I first ingested the dataset and import all necessary libraries, before downloading the Zip file and view the first six columns and rows of the dataset. There was no missing values in the dataset, so i do not perform any data cleaning.
+ I perform Exploratory data analysis by:
+carrying our univariate by grouping all numerical features together and i create a function that loop into each columns.The histogram boxplot shows that most of all features are rightly skewed while some are slightly skewed.
+I also examine the correlation of each feature with the target variable(quality)
+I map the quality column into a categorical classes by [9: best, 8: best, 7: Good, 6: Good, 5: Average, 4: Bad, 3: Bad]
+Preprocessing:
+I split the dataset into features X(independent) and y(dependent)
+I checkout for the shape of the (training & test)set. I also checkout the percentage of classes in training set.
+Evaluation of the model was done by checkingout for Accuracy, precision, Recall, F1-score and a confusion Matrix. MinMaxScaer was used to scale x and y features.
+Train_test_split() method was used to split data  at the ratio 80:20
+Classification methods was used to get the accurate prediction and RandomForestClassifier was use to select the best 
+
