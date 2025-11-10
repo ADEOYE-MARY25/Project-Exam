@@ -6,8 +6,13 @@ I also examine the correlation of each feature with the target variable(quality)
 I map the quality column into a categorical classes by [9: best, 8: best, 7: Good, 6: Good, 5: Average, 4: Bad, 3: Bad]
 Preprocessing:
 I split the dataset into features X(independent) and y(dependent)
-I checkout for the shape of the (training & test)set. I also checkout the percentage of classes in training set.
+I checkout for the shape of the training set(3918 rows, 11 columns), and the shape of test set(980rows, 11 columns). I also checkout the percentage of classes in training set.
 Evaluation of the model was done by checkingout for Accuracy, precision, Recall, F1-score and a confusion Matrix. MinMaxScaer was used to scale x and y features.
-Train_test_split() method was used to split data  at the ratio 80:20
+Train_test_split() method was used to split data at the ratio 80:20
 Classification methods was used to get the accurate prediction and RandomForestClassifier was use to select the best 
+confusion_Matrix result; from the prediction accuracy is 0.77.
+519 AND 222 are the true prediction while 59 is the type1 error and 103 is the type2 error
+Good quality wine has the highest number of support(578) which means it has more values to train compare to others, the precision was 0.79 which make it good, it also has 0.90 Recall which means that the model can recall 90% of the dataset. f1-score shows the average score of both precision and recall to be  0.84.
+Average quality wine has 0.72 which is good  and the model can recall or identify 68% of the entire dataset the average score i.e f1-score was 0.70 which is fair enough and the total support is 325 which means that the model still have enough dataset to train
+Best quality wine has 1.00 precision and it can only recall about 0.37 of the dataset and the f1-score i.e average score o.54 and about 38 values to train, there are no much values
 

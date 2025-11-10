@@ -11,8 +11,8 @@ from random import randint
 
 
 app=FastAPI()
-model= joblib.load("../model/model.pkl")
-scalar=joblib.load("../model/scalar.pkl")
+model= joblib.load("model.pkl")
+scalar=joblib.load("scaler.pkl")
 
 
 class Data(BaseModel):
@@ -25,8 +25,10 @@ class Data(BaseModel):
         density : float
         pH: float
         sulphates: float
+        volatile_acidity: float
         alcohol: float
-        quality : float
+      
+       
 
 
 @app.get("/")
@@ -34,22 +36,23 @@ def home():
         return{'message', 'welcome to Wine dataset Predictor'}
 
 @app.post("/predict_wine_quality")
-def get_predicted_quality():
+def get_predicted_quality(input: Data):
     features=np.array([[
-        input.fixed acidity,
-        input.citric acid,
-        input.residual sugar, 
+        input.fixed_acidity,
+        input.citric_acid,
+        input.residual_sugar, 
         input.chlorides,
         input.free_sulfur_dioxide,
         input.total_sulfur_dioxide,
         input.density,
-        input. pH,
-        input. sulphates,
+        input.pH,
+        input.sulphates,
+        input.volatile_acidity,
         input.alcohol
     ]])
     
     x_scaled= scalar.fit_transform(features)
-    y_prediction = model.predic(x_scaled)
+    y_prediction = model.predict(x_scaled)
     return (y_prediction[0])
         
 
